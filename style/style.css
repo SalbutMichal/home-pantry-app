@@ -1,0 +1,315 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.page-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 50px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #000;
+  margin: 0 0 25px 0;
+  min-height: 75px;
+}
+.page-nav__element {
+  font-size: 20px;
+  border-bottom: 2px dotted #ccc;
+  color: #ccc;
+  text-decoration: none;
+  cursor: pointer;
+}
+.page-nav__element:hover {
+  color: #fff;
+}
+
+.button-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  width: 80%;
+  margin: auto;
+}
+
+.page-button__add-product {
+  background: #54b4d3;
+  border: 0;
+  margin: 0 0 25px 0;
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.page-button__add-product:hover {
+  background: #3b71ca;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  color: #fbfbfb;
+  cursor: pointer;
+}
+
+.page-content {
+  display: table;
+  width: 80%;
+  margin: auto;
+}
+.page-content__table {
+  display: table-row-group;
+}
+.page-content__table-thumbnail {
+  max-width: 300px;
+}
+.page-content__table-row {
+  display: table-row;
+}
+.page-content__table-cell {
+  text-align: center;
+  border: 1px solid #999999;
+  display: table-cell;
+  padding: 3px 10px;
+  vertical-align: middle;
+}
+
+.modal-add-product {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.modal-add-product__header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+  height: 70px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.modal-add-product__content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.modal-add-product__body {
+  padding: 2px 16px;
+}
+.modal-add-product__footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 0.75rem;
+  border-top: 2px solid #f1f1f1;
+  border-bottom-right-radius: calc(0.5rem - 1px);
+  border-bottom-left-radius: calc(0.5rem - 1px);
+}
+.modal-add-product__footer-btn {
+  text-transform: uppercase;
+  vertical-align: bottom;
+  border: 0;
+  -webkit-box-shadow: 0 4px 9px -4px rgba(0, 0, 0, 0.35);
+          box-shadow: 0 4px 9px -4px rgba(0, 0, 0, 0.35);
+  font-weight: 500;
+  padding: 0.625rem 1.5rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  margin: 0.25rem;
+  cursor: pointer;
+}
+.modal-add-product__footer-btn:active {
+  background-color: #d5dde8;
+}
+.modal-add-product__footer-btn:hover {
+  background-color: #3265b9;
+  color: #fff;
+}
+.modal-add-product__footer-btn--save {
+  background-color: #3b71ca;
+  color: #fff;
+  -webkit-box-shadow: 0 4px 9px -4px #3b71ca;
+          box-shadow: 0 4px 9px -4px #3b71ca;
+}
+.modal-add-product__close {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.modal-add-product__close:hover, .modal-add-product__close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.page-footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  text-align: center;
+}
+
+.thumb {
+  height: 75px;
+  border: 1px solid #000;
+  margin: 10px 5px 0 0;
+}
+
+.formbold-mb-5 {
+  margin-bottom: 20px;
+}
+
+.formbold-pt-3 {
+  padding-top: 12px;
+}
+
+.formbold-main-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 48px;
+}
+
+.formbold-form-wrapper {
+  margin: 0 auto;
+  max-width: 550px;
+  width: 100%;
+  background: white;
+}
+
+.formbold-form-label {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  color: #07074d;
+  margin-bottom: 12px;
+}
+
+.formbold-form-label-2 {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.formbold-form-input {
+  width: 100%;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  font-weight: 500;
+  font-size: 16px;
+  color: #6b7280;
+  outline: none;
+  resize: none;
+}
+
+.formbold-form-input:focus {
+  border-color: #6a64f1;
+  -webkit-box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+          box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold-btn {
+  text-align: center;
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 14px 32px;
+  border: none;
+  font-weight: 600;
+  background-color: #6a64f1;
+  color: white;
+  cursor: pointer;
+}
+
+.formbold-btn:hover {
+  -webkit-box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+          box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold--mx-3 {
+  margin-left: -12px;
+  margin-right: -12px;
+}
+
+.formbold-px-3 {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flex-wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.formbold-radio {
+  width: 20px;
+  height: 20px;
+}
+
+.formbold-radio-label {
+  font-weight: 500;
+  font-size: 16px;
+  padding-left: 12px;
+  color: #070707;
+  padding-right: 20px;
+}/*# sourceMappingURL=style.css.map */
