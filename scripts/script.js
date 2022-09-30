@@ -1,7 +1,7 @@
 //ustawiam klucz w sesion storage na 0
-window.addEventListener('DOMContentLoaded', (event) => {
-    sessionStorage.setItem('key', 0);
-});
+// window.addEventListener('DOMContentLoaded', (event) => {
+//     // sessionStorage.setItem('key', 0);
+// });
 //Modal
 
 var modal = document.querySelector(".modal-add-product");
@@ -50,11 +50,6 @@ var saveBtn = document.querySelector('.modal-add-product__footer-btn--save');
 saveBtn.onclick = function (event) {
     event.preventDefault();
     var nazwa = document.querySelector('[name=product_name]').value;
-    try {
-        var zdjecieProduktu = document.querySelector('.thumb').src;
-    }
-    catch (e) {
-    }
     var dataPrzydatnosci = document.querySelector('[name=expiration_date]').value;
     var lokalizacjaProduktu = document.querySelector('[name=product_location]').value;
     var kodKreskowy = document.querySelector('[name=bar_code]').value;
@@ -62,9 +57,29 @@ saveBtn.onclick = function (event) {
     ++key;
     sessionStorage.setItem('key', key);
     var table = document.querySelector('.page-content__table');
-    table.innerHTML += '<div class="page-content__table-row"><div class="page-content__table-cell">' + key + '</div><div class="page-content__table-cell">' + nazwa +'</div><div class="page-content__table-cell"><img class="page-content__table-thumbnail" src="'+zdjecieProduktu+'" /></div><div class="page-content__table-cell">'+dataPrzydatnosci+'</div><div class="page-content__table-cell">'+lokalizacjaProduktu+'</div><div class="page-content__table-cell">'+kodKreskowy+'</div></div>'
-    modal.style.display = "none";
-    console.log(nazwa, dataPrzydatnosci, lokalizacjaProduktu, kodKreskowy, zdjecieProduktu);
+    table.innerHTML += '<div class="page-content__table-row"><div class="page-content__table-cell">' + key + '</div><div class="page-content__table-cell">' + nazwa + '</div><div class="page-content__table-cell"><img class="page-content__table-thumbnail" src="' + document.querySelector('.thumb').src +'" /></div><div class="page-content__table-cell">'+dataPrzydatnosci+'</div><div class="page-content__table-cell">'+lokalizacjaProduktu+'</div><div class="page-content__table-cell">'+kodKreskowy+'</div></div>'
+    
+    $.ajax({
+        type: "POST",
+        url: "/home-pantry-app/api/add-product.php",
+        data: {
+            nazwa: nazwa,
+            zdjecieProduktu: document.querySelector('.thumb').src,
+            dataPrzydatnosci: dataPrzydatnosci,
+            lokalizacjaProduktu: lokalizacjaProduktu,
+            kodKreskowy: kodKreskowy,
+        },
+        success: function(result){
+            var parseresult = JSON.parse(result);
+            console.log(parseresult.success);
+            // console.log(result);
+            if (parseresult.success){
+                modal.style.display = "none";
+            }else{
+                alert('Aby dodać produkt, wszystkie pola muszą być uzupełnione');
+            }
+        },
+    });
 }
 
 

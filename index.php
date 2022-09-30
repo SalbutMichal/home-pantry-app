@@ -33,12 +33,44 @@
                 <div class="page-content__table-cell">Lokalizacja produtku</div>
                 <div class="page-content__table-cell">Kod kreskowy</div>
             </div>
+            <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "spizarnia";
+
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT * FROM produkty";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while($row = mysqli_fetch_assoc($result)) {
+                        echo '<div class="page-content__table-row">
+                                <div class="page-content__table-cell">'.$row['id'].'</div>
+                                <div class="page-content__table-cell">'.$row['name'].'</div>
+                                <div class="page-content__table-cell"><img class="page-content__table-thumbnail" src="'.$row['photo'].'" /></div>
+                                <div class="page-content__table-cell">'.$row['expiration_date'].'</div>
+                                <div class="page-content__table-cell">'.$row['product_location'].'</div>
+                                <div class="page-content__table-cell">'.$row['bar_code'].'</div>
+                            </div>';
+                        
+                        // "id: " . $row["id"]. " - Name: " . $row["name"]. " " . $row["photo"]. "<br>";
+                    }
+                } 
+                $conn->close();
+            ?>
         </div>
     </section>
     <!-- The Modal -->
     <div class="modal-add-product">
         <div class="modal-add-product__content">
-            <form action="#" method="POST">
+            <form method="POST">
                 <div class="modal-add-product__header">
                     <h2>Dodawanie produktu do spiżarni</h2>
                     <span class="modal-add-product__close">&times;</span>
@@ -93,7 +125,7 @@
                     </div>
                 </div>
                 <div class="modal-add-product__footer">
-                    <button type="submit" class="modal-add-product__footer-btn modal-add-product__footer-btn--save">Dodaj produkt</button>
+                    <button type="button"  class="modal-add-product__footer-btn modal-add-product__footer-btn--save">Dodaj produkt</button>
                 </div>
             </form>
         </div>
@@ -103,7 +135,6 @@
     </footer>
 
     <script src="./scripts/script.js"></script>
-
 </body>
 
 </html>
